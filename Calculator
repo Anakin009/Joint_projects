@@ -1,0 +1,74 @@
+/*
+Welcom to my program, it works perfect for everything except negative delta
+Here's an example i am working on:
+2x^2 + 2x + 1 = 0   //ax^2 + bx + c = 0
+Δ = 4 - 8   //b^2 - 4*a*c
+√Δ = √4*i^2 = √4 *i = 2i
+x1 = -2-2i^2/4
+x2 = -2+2i^2/4, x belong to complex numbers
+*/
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+double a, b, c, x1, x2, x0, x3, x4, xf0, D, pD;
+
+int main()
+{
+    cout<<"Calculating Δ and roots"<<endl;
+    cout<<"ax^2+by+c=0: "<<endl;
+    cout<<"Insert a, b and c (press enter after writting each one)"<<endl;
+    
+    cout<<"a: ";
+    cin>>a;
+    cout<<"b: ";
+    cin>>b;
+    cout<<"c: ";
+    cin>>c;
+    
+    if (a != 0)//dermining is the equation linear or quadratic
+    {
+        D = pow(b, 2)-4*(a*c);
+        if (D>=0)//determining is delta highier than 0
+        {
+            cout<<"Δ = "<<D<<endl;
+        
+            pD = sqrt(D);
+            cout<<"√Δ = "<<pD<<endl;
+        
+            x1 = (-b-pD)/2*a;
+            x2 = (-b+pD)/2*a;
+            cout<<"x₁ = "<<x1<<endl;
+            cout<<"x₂ = "<<x2<<endl;
+        }
+        else if (D=0)//determining is delta equal 0
+        {
+            x0 = (-b)/2*a;
+            cout<<"Δ = 0"<<endl;
+            cout<<"x₀ = "<<x0<<endl;
+        }
+        else// (for me) deleted code: if (D<0)//determining is delta less than 0
+        {
+        cout<<"Δ is < 0"<<endl;//After this part of code, it is getting worst and worst
+        pD = D*(-1);//√Δ = √(b^2-4ac) = √(b^2-4ac)*(-1)*i^2 = √(b^2-4ac)*(-1) *i (i outside the square root)
+       //here is another problem, becouse "i" should be counted as pD
+        cout<<"x ∈ C"<<endl;
+        cout<<"√Δ = "<<pD<<"i"<<endl;
+        
+        x3 = (-b-pD)/2*a;
+        x4 = (-b+pD)/2*a;
+        cout<<"x₁ = "<<x3<<"i"<<endl;//so this is inapropriate, I can't do this, becouse i can't assign "i" to int
+        cout<<"x₂ = "<<x4<<"i"<<endl;
+        }
+    }
+    else
+    {
+        cout<<"Linear equation\n";
+        cout<<"a is = 0"<<endl;
+        xf0 = - (c/b);
+        cout<<"x₀ = "<<xf0<<endl;
+    }
+    
+    return 0;
+}
